@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "name": "gpu-node-01",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 61,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-02",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 62,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-03",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 88,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-04",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-05",
+      "gpus_expected": 8,
+      "gpus_found": null,
+      "max_temp_c": 65,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-06",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": "N/A",
+      "xid_errors": 0
+    },
+    {
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 50,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-08",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 68,
+      "xid_errors": true
+    },
+    {
+      "name": "--all",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 69,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-10",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 70,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-11",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 71,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-12",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 72,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-13",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 73,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-14",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 74,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-15",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 75,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-16",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 76,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-17",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 77,
+      "xid_errors": 0
+    }
+  ]
+}

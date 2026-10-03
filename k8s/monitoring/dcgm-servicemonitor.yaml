@@ -1,0 +1,24 @@
+# Scrape dcgm-exporter (deployed by the GPU Operator in the gpu-operator namespace).
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dcgm-exporter
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  namespaceSelector:
+    matchNames: [gpu-operator]
+  selector:
+    matchLabels:
+      app: nvidia-dcgm-exporter
+  endpoints:
+    - port: gpu-metrics
+      interval: 15s
+      # dcgm-exporter attaches the pod/namespace of the *workload* using each GPU;
+      # keep those rather than overwriting them with the exporter pod's own labels.
+      honorLabels: true
+      relabelings:
+        # Stable "node" label for alerts, dashboards and cordon/drain commands.
+        - sourceLabels: [__meta_kubernetes_pod_node_name]
+          targetLabel: node

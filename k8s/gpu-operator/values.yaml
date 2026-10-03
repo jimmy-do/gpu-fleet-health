@@ -1,0 +1,42 @@
+# NVIDIA GPU Operator values for a single-node k3s cluster.
+# Host: Ubuntu 24.04, RTX 4090, NVIDIA driver installed on the host (apt).
+#
+# Install: make install-operator
+#   helm upgrade --install gpu-operator nvidia/gpu-operator \
+#     -n gpu-operator --create-namespace -f k8s/gpu-operator/values.yaml
+
+# The driver is already on the host; the operator must not try to install one.
+driver:
+  enabled: false
+
+# Container toolkit wires nvidia-container-runtime into k3s's embedded containerd.
+# Operator v25.10+ configures the runtime via CDI, so the
+# only k3s-specific setting is its non-standard socket path. Don't point
+# CONTAINERD_CONFIG at k3s's config.toml: k3s regenerates that file on restart.
+toolkit:
+  enabled: true
+  env:
+    - name: CONTAINERD_SOCKET
+      value: /run/k3s/containerd/containerd.sock
+
+# Advertises nvidia.com/gpu to the scheduler.
+devicePlugin:
+  enabled: true
+
+# dcgm-exporter publishes GPU metrics on :9400 (service port name "gpu-metrics").
+# We ship our own ServiceMonitor (k8s/monitoring/dcgm-servicemonitor.yaml), so the
+# operator's is disabled. The custom metrics list adds XID and ECC counters
+# (k8s/gpu-operator/dcgm-metrics-configmap.yaml, applied before this chart).
+dcgmExporter:
+  enabled: true
+  serviceMonitor:
+    enabled: false
+  config:
+    name: dcgm-exporter-metrics
+  env:
+    - name: DCGM_EXPORTER_COLLECTORS
+      value: /etc/dcgm-exporter/dcgm-metrics.csv
+
+# MIG is a data center feature; GeForce cards don't support it.
+migManager:
+  enabled: false

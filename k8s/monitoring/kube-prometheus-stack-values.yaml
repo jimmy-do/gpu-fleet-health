@@ -1,0 +1,52 @@
+# kube-prometheus-stack values for a single-node k3s home lab.
+#
+# Install: make install-monitoring
+#   helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
+#     -n monitoring --create-namespace -f k8s/monitoring/kube-prometheus-stack-values.yaml
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    scrapeInterval: 15s
+    # Select ServiceMonitors / PrometheusRules from any namespace, not only
+    # objects labelled with this Helm release.
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path   # k3s default provisioner
+          accessModes: [ReadWriteOnce]
+          resources:
+            requests:
+              storage: 20Gi
+
+alertmanager:
+  # Default config routes to a "null" receiver. Add Slack/email/PagerDuty
+  # receivers under alertmanager.config when wiring up real notifications.
+  alertmanagerSpec:
+    retention: 120h
+
+grafana:
+  # Default admin password is "prom-operator"; change it for anything non-local:
+  #   kubectl -n monitoring get secret kube-prometheus-stack-grafana \
+  #     -o jsonpath='{.data.admin-password}' | base64 -d
+  sidecar:
+    dashboards:
+      enabled: true
+      # The GPU dashboard ConfigMap carries this label (see Makefile).
+      label: grafana_dashboard
+      labelValue: "1"
+
+# k3s runs the control plane inside one binary: there are no separate
+# controller-manager / scheduler / proxy / etcd pods to scrape, so these
+# targets would only ever show as down.
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeProxy:
+  enabled: false
+kubeEtcd:
+  enabled: false

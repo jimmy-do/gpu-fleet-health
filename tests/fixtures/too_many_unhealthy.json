@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "name": "gpu-node-01",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 61,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-02",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 91,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-03",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 63,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-04",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 64,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-05",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 91,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-06",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 66,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-07",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 67,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-08",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 91,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-09",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 69,
+      "xid_errors": 0
+    },
+    {
+      "name": "gpu-node-10",
+      "gpus_expected": 8,
+      "gpus_found": 8,
+      "max_temp_c": 70,
+      "xid_errors": 0
+    }
+  ]
+}
